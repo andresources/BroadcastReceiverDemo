@@ -3,11 +3,17 @@ package com.broadcastRevDemo.ex2manifest
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.widget.Toast
 
 class MyCustomBroadcastReceiver : BroadcastReceiver() {
+    var str = ""
     override fun onReceive(context: Context?, intent: Intent?) {
-        Toast.makeText(context,"send", Toast.LENGTH_LONG).show()
-        MyCustomBroadcastReceiverActivity.myData.value = "Hello from receiver>>>>"
+
+        intent.let {
+            when(it?.action){
+                "com.demo.start" -> str = "Player is started"
+                "com.demo.stop" -> str = "Player is stopped"
+            }
+        }
+        MyCustomBroadcastReceiverActivity.myData.value = "Value : ${str}"
     }
 }

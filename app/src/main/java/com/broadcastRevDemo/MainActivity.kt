@@ -15,7 +15,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         tv = findViewById(R.id.tv)
+        //This is for launch from another app and result back to that screen
+        intent?.let {
+            if(intent.hasExtra("mydata")) {
+                tv.setText("Data is : ${intent.getStringExtra("mydata")}")
+                val intent=Intent()
+                intent.putExtra("mydat","Data from Second Activity")
+                setResult(100,intent)
+                finish()
+            }
+        }
         myBroadcastReceiver = MyBroadcastReceiver()
         val intentFilter = IntentFilter()
         intentFilter.addAction("START")

@@ -27,7 +27,13 @@ class MyCustomBroadcastReceiverActivity : AppCompatActivity()  {
 
     fun fSend(view: View) {
         val intentF = Intent(this,MyCustomBroadcastReceiver::class.java).apply {
-            action = "myaction1"
+            action = "com.demo.start"
+        }
+        sendBroadcast(intentF)
+    }
+    fun fStop(view: View) {
+        val intentF = Intent(this,MyCustomBroadcastReceiver::class.java).apply {
+            action = "com.demo.stop"
         }
         sendBroadcast(intentF)
     }
