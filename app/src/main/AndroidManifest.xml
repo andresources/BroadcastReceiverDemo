@@ -11,26 +11,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BroadcastReceiverDemo"
         tools:targetApi="31">
-
         <!--<activity
+            android:name=".custombroadcast.CustomBroadcastActivity"
+            android:exported="false" />-->
+        <!--
+        <activity
             android:name=".ex4screenonoff.Ex4ScreeOnOffMainActivity"
             android:exported="true">
             <intent-filter>
                 <data android:mimeType="text/*" />
             </intent-filter>
-        </activity>-->
-
+        </activity>
+        -->
         <activity
-            android:name=".ex4screenonoff.Ex4ScreeOnOffMainActivity"
+            android:name=".custombroadcast.CustomBroadcastActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <service android:name=".ex4screenonoff.MyService" android:exported="false"/>
+        <service
+            android:name=".ex4screenonoff.MyService"
+            android:exported="false" />
 
         <receiver
             android:name=".ex2manifest.MyCustomBroadcastReceiver"
